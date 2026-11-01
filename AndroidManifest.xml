@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="local.castle.tv" android:versionCode="30" android:versionName="Grand Grand Final">
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_TV_LISTINGS" />
+  <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="28" />
+  <uses-feature android:name="android.software.leanback" android:required="true" />
+  <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+  <application android:label="Kingdom Fantasy" android:theme="@android:style/Theme.Material.NoActionBar" android:allowBackup="false" android:hardwareAccelerated="true" android:supportsRtl="true">
+    <service android:name=".PlaybackListener" android:label="Castle TV · прогресс YouTube / SmartTube" android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" android:exported="true"><intent-filter><action android:name="android.service.notification.NotificationListenerService" /></intent-filter></service>
+    <activity android:name=".CastleBrowserActivity" android:exported="false" android:process=":browser" android:screenOrientation="landscape" />
+    <activity android:name=".CastleActivity" android:exported="true" android:launchMode="singleTask" android:screenOrientation="landscape" android:excludeFromRecents="true">
+      <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.HOME"/><category android:name="android.intent.category.DEFAULT"/></intent-filter>
+      <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/><category android:name="android.intent.category.LEANBACK_LAUNCHER"/></intent-filter>
+    </activity>
+  </application>
+</manifest>

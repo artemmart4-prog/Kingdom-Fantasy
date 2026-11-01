@@ -1,0 +1,10 @@
+Kingdom Fantasy music credits
+DAY: Castle Festival. Original 6/8 chiptune dance composed for this launcher. No soundtrack samples or melodies from the referenced films/games.
+NIGHT: Ludwig van Beethoven, Piano Sonata No.14, Op.27 No.2, movement I, Adagio sostenuto. Composition in the public domain.
+Digital score: Stewart Holmes, Mutopia Project, Mutopia-2007/02/11-276; source Berners 1908, edited A. Winterberger.
+Source: https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=276
+MIDI: https://www.mutopiaproject.org/ftp/BeethovenLv/O27/moonlight/moonlight-mids.zip
+Digital score licensed CC BY-SA 2.5: https://creativecommons.org/licenses/by-sa/2.5/
+Changes: MIDI converted to timed note events; rendered with soft band-limited triangle chiptune voices, original pitches/timing retained, envelope/release and volume adapted.
+The derived MoonlightNotes.java data and night chiptune arrangement/rendering are distributed under CC BY-SA 2.5. Attribution does not imply endorsement.
+Editable timed note data are included in src/local/castle/tv/MoonlightNotes.java. This notice applies to the night arrangement; unrelated launcher code is separate.

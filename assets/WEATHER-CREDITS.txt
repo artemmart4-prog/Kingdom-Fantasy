@@ -1,0 +1,5 @@
+Weather data: Open-Meteo.com https://open-meteo.com/
+API data licence: CC BY 4.0 https://creativecommons.org/licenses/by/4.0/
+Location database: GeoNames via Open-Meteo geocoding.
+Changes: rounded temperature, grouped WMO codes, artistic pixel weather effects.
+Model-based city conditions for Gross-Umstadt, Germany. Not a local rain sensor.

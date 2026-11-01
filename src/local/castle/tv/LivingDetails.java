@@ -1,0 +1,17 @@
+package local.castle.tv;
+import android.graphics.*;
+
+/** Bounded ambient details in landscape coordinates; deterministic seeds avoid frame allocations. */
+final class LivingDetails {
+ final Paint p=new Paint();static final int[] SPECTRAL={0x99efaaaa,0x99efc19a,0x99ebdf9e,0x99b6edd6,0x99a4d7ff,0x99a9b5ef,0x99d3a8e9};
+ void box(Canvas c,float x,float y,float w,float h,int color){p.setAntiAlias(false);p.setColor(color);c.drawRect(x,y,x+w,y+h,p);}
+ int color(int base,float light){return SceneClock.mix(SceneClock.mix(base,0xff0a1730,.6f),base,light);}
+ void stonework(Canvas c,float light){for(int i=0;i<40;i++){int x=227+(i*17)%52,y=91+(i*13)%58;if(y>=136&&x+6>=246&&x<=261)continue;box(c,x,y,3+i%4,1,color(i%2==0?0xffa3a9a2:0xff596979,light));}for(int x:new int[]{204,295}){box(c,x,136,10,14,color(0xff35444c,light));box(c,x+1,137,8,10,color(0xffa36d67,light));box(c,x+4,138,2,8,color(0xffe4c687,light));box(c,x+2,141,6,2,color(0xffe4c687,light));}}
+ void crest(Canvas c,float light){box(c,255,47,4,3,color(0xffe5ce8a,light));box(c,256,46,2,5,color(0xffe5ce8a,light));}
+ void waterfall(Canvas c,long now,float light){for(int i=0;i<8;i++){float y=140+(i*4+now/110f)%27;box(c,430+i%2,y,1,3,color(i%2==0?0xffe1f0e5:0xffa6d1d8,light));}for(int i=0;i<3;i++)box(c,427+i*3,166+(now/200+i)%2,2,1,color(0xffd0e8e2,light));}
+ void foregroundFlowers(Canvas c,float light){for(int i=0;i<36;i++){int x=11+(i*71)%490,y=279+(i*17)%37;if(y>=278&&y<=297)continue;box(c,x,y,1,4,color(0xff56784f,light));box(c,x-1,y-1,3,2,color(i%3==0?0xffe5baaf:i%3==1?0xffe8d89a:0xffbbcadb,light));}}
+ void fireflies(Canvas c,long now,float light){if(light>.55f)return;for(int i=0;i<5;i++){long cycle=(now+i*4400)/18000;float t=Math.floorMod(now+i*4400,18000)/18000f;float fade=Math.min(1,t*7)*Math.min(1,(1-t)*7);int seed=(int)((cycle*193+i*89)&0x7fffffff);float x=16+seed%480+(float)Math.sin(now/1600.0+i)*7,y=250+(seed/7)%62+(float)Math.sin(now/2100.0+i*3)*5;int alpha=(int)(fade*(1-light)*190);box(c,x-1,y-1,3,3,(alpha/5<<24)|0xc9ed91);box(c,x,y,1,1,(alpha<<24)|0xe7f6ad);}}
+ void butterflies(Canvas c,long now,float light){for(int i=0;i<4;i++){float x=42+i*117+(float)Math.sin(now/3900.0+i*2)*19,y=258+(i*13)%37+(float)Math.sin(now/2100.0+i*1.7)*8;int spread=1+(int)((now/140+i)%3),col=color(i==0?0xffedb975:i==1?0xffd3b1d9:i==2?0xffeedca3:0xffa9ced9,Math.max(.4f,light));box(c,x-spread-1,y-2,spread,3,col);box(c,x+1,y-2,spread,3,col);box(c,x-spread,y+1,Math.max(1,spread-1),2,col);box(c,x+1,y+1,Math.max(1,spread-1),2,col);box(c,x,y-1,1,4,0xff44504a);}for(int i=0;i<2;i++){float x=125+i*230+(float)Math.sin(now/2200.0+i)*24,y=251+i*18+(float)Math.cos(now/1700.0+i)*7;box(c,x-1,y-1,3,1,0x99d4dfd0);box(c,x,y,1,2,0xff52645c);}}
+ void fish(Canvas c,long now,float light,boolean allowed){if(!allowed)return;long cycle=now/19000,age=Math.floorMod(now,19000);if(age>=2400)return;float t=age/2400f;int seed=(int)((cycle*127+31)&0x7fffffff);float x=(seed%2==0?50:345)+(seed%100)+t*30,y=216-(float)Math.sin(t*Math.PI)*18;int col=light<.4f?0xff9edce3:0xffe2c690;if(light<.4f)box(c,x-2,y-2,10,6,0x226fe1f0);box(c,x,y,6,3,col);box(c,x-2,y-1,2,5,col);box(c,x+4,y,1,1,0xff263c47);}
+ void watcher(Canvas c,long now,float light){c.save();c.translate(17,0);box(c,181,150,8,17,color(0xff343653,light));box(c,182,146,6,6,color(0xff4e526d,light));box(c,183,148,4,3,color(0xff141f32,light));int side=(int)((now/3300)%3)-1;box(c,184+side,149,2,1,0xffbcd5e4);box(c,179,153,2,12,color(0xff5a6682,light));box(c,188,149,1,19,color(0xffb7a67d,light));box(c,187,147,3,3,color(0xffddc894,light));c.restore();}
+}
